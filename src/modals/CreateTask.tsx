@@ -1,7 +1,7 @@
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {useState} from 'react';
 
-const CreateTask = ({modal, toggle} : {modal: boolean, toggle: React.MouseEventHandler<HTMLButtonElement> | undefined}) => {
+const CreateTask = ({modal, toggle, save} : {modal: boolean, toggle: React.MouseEventHandler<HTMLButtonElement> | undefined, save: VoidFunction}) => {
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
     
@@ -13,6 +13,14 @@ const CreateTask = ({modal, toggle} : {modal: boolean, toggle: React.MouseEventH
         }else{ 
             setDesc(value)
         }
+    }
+
+    const handleSave  = () => {
+        let taskObj = {
+            name, desc
+        }
+        save(taskObj);
+        toggle()
     }
     
     return ( 
@@ -39,7 +47,7 @@ const CreateTask = ({modal, toggle} : {modal: boolean, toggle: React.MouseEventH
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={toggle}>Create</Button>{' '}
+            <Button color="primary" onClick={handleSave}>Create</Button>{' '}
             <Button color="secondary" onClick={toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
