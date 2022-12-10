@@ -24,7 +24,7 @@ const Task = ({task, setTaskList, taskList} : {task: ITask, setTaskList: any, ta
                 <div>
                     <button className="btn btn-danger"
                     onClick={() => {
-                       setTaskList(taskList.filter(tsk => tsk.id !== task.id)) 
+                       setTaskList([...taskList.filter(tsk => tsk.id !== task.id)]) 
                     }}
                     >Del</button>
                 </div>

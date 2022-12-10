@@ -21,7 +21,7 @@ const DropDown = ({task, setTaskList, taskList} : {task: ITask, setTaskList: any
                 key={Math.random()*10} 
                 onClick={(e) => {
                     taskList.filter(tsk => task.id === tsk.id)[0].status = e.currentTarget.innerHTML 
-                    setTaskList(taskList)
+                    setTaskList([...taskList])
                 }}
                 value={status}>
                     {status}
