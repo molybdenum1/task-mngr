@@ -1,13 +1,13 @@
+
 import Dropdown from 'react-bootstrap/Dropdown';
 import { ITask } from '../interfaces/ITask';
 
-const DropDown = ({task} : {task: ITask}) => {
+const DropDown = ({task, setTaskList, taskList} : {task: ITask, setTaskList: any, taskList: ITask[]}) => {
 
-    const statuses = ['TODO', 'In Proccess', 'Done']
-    // const taskStatusHandler = (e: React.MouseEventHandler<HTMLButtonElement>) => {
-    //     e.tar
-    // }
+    const statuses = ['TODO', 'In Proccess', 'Done'];
 
+    // console.log(task);
+    
     return ( 
     <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -17,11 +17,15 @@ const DropDown = ({task} : {task: ITask}) => {
         <Dropdown.Menu>
           {
             statuses.map(status => (
-                <Dropdown.Item onClick={(e) => {
-                    task.status = e.currentTarget
+                <Dropdown.Item
+                key={Math.random()*10} 
+                onClick={(e) => {
+                    taskList.filter(tsk => task.id === tsk.id)[0].status = e.currentTarget.innerHTML 
+                    setTaskList(taskList)
                 }}
-                value={status}
-                >{status}</Dropdown.Item>
+                value={status}>
+                    {status}
+                </Dropdown.Item>
             ))
           }
           

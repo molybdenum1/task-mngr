@@ -1,7 +1,8 @@
 import { useState } from "react";
 import CreateTask from "../modals/CreateTask";
 import { ITask } from "../interfaces/ITask";
-import DropDown from "./DropDown";
+
+import Task from "./Task";
 
 const TodoList = () => {
     const [modal, setModal] = useState(false);
@@ -13,7 +14,7 @@ const TodoList = () => {
         tmp.push(task);
         setTaskList(tmp)
     } 
-    console.log(taskList);
+    // console.log(taskList);
     
     return ( 
         <>
@@ -26,27 +27,7 @@ const TodoList = () => {
             <div className="task-container">
                 {
                     taskList && taskList.map((task: ITask) => (
-                        <div className="task"
-                            style={
-                            (task.status === 'TODO' &&  {backgroundColor:'#B6E2A1'}) ||
-                            (task.status === 'In Proccess' &&  {backgroundColor:'#EF9A53'}) ||
-                            (task.status === 'Done' &&  {backgroundColor:'#DD5353'}) ||
-                            {backgroundColor: 'white'}
-                            }
-                        >
-                            <div className="task-title">
-                                {task.name}
-                            </div>
-                            <div className="task-desc">
-                                {task.desc}
-                            </div>
-                            <div className="task-footer">
-                                <DropDown task={task}/>
-                                <div>
-                                    <button className="btn btn-danger">Del</button>
-                                </div>
-                            </div>
-                        </div>
+                        <Task key={task.id} task={task} setTaskList={setTaskList} taskList={taskList}/>
                     ))
                 }
             </div>
