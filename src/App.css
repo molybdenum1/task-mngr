@@ -1,35 +1,41 @@
 .App {
   text-align: center;
 }
-.boards {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-.board {
-  flex-direction: row;
-  margin: 10px 30px;
-  border: 1px solid black;
-  border-radius: 3%;
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-}
-.board-title {
-  font-weight: bold;
-}
-.board-main {
-  
-}
-.task {
-  margin: 10px;
-  padding: 5px;
-  border: 1px solid black;
-  border-width: 1px 0;
-}
 .header{
   height: 200px;
   width: 100%;
   background-color: #E9EEF6;
   padding: 50px;
+}
+
+.task-container {
+  display: flex;
+  justify-content: flex-start;
+}
+.task{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #DEBACE;
+  height: 200px;
+  width: 300px;
+  border-radius: 6%;
+  margin: 20px;
+}
+.task-title {
+  font-weight: bold;
+  font-size: large;
+  margin: 10px auto;
+  border: 1px solid black;
+  border-width: 0 0 1px 0;
+  
+}
+.task-desc {
+
+}
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
 }

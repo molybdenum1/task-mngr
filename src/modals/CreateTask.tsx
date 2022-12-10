@@ -1,9 +1,10 @@
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {useState} from 'react';
 
-const CreateTask = ({modal, toggle, save} : {modal: boolean, toggle: React.MouseEventHandler<HTMLButtonElement> | undefined, save: VoidFunction}) => {
+const CreateTask = ({modal, toggle, save} : {modal: boolean, toggle: React.MouseEventHandler<HTMLButtonElement> | any, save: any}) => {
     const [name, setName] = useState('');
     const [desc, setDesc] = useState('');
+    const [status] = useState('TODO');
     
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
         const name= e.target.name;
@@ -15,12 +16,11 @@ const CreateTask = ({modal, toggle, save} : {modal: boolean, toggle: React.Mouse
         }
     }
 
-    const handleSave  = () => {
-        let taskObj = {
-            name, desc
-        }
-        save(taskObj);
-        toggle()
+    const handleSave = () => { 
+        save({id: Math.random()*100, name: name, desc: desc, status});
+        setName('');
+        setDesc('');
+        toggle();
     }
     
     return ( 
